@@ -1,2 +1,24 @@
 ---
 # defaults file for kentr.setup-drush
+
+#environments:
+#  stage:
+#    root: "stage_html"
+#  prod:
+#    root: "public_html"
+
+# Enable the "common" structure-tables-key. Default: False
+# See https://raw.githubusercontent.com/drush-ops/drush/master/examples/example.drushrc.php
+drush_enable_structure_tables_key_common: True
+
+# Enable insertion of local and remote drush aliases.  Default: True
+# Values are taken from inventory values for host.
+drush_aliases_remote: True
+drush_aliases_local: True
+
+# Enable dated sql-dump result file.  Default: True
+drush_enable_dated_result_file: True
+
+drush_alias_file_prefix: "{{ inventory_hostname }}"
+
+# instance: "{{ item }}"
