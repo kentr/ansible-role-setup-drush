@@ -1,2 +1,5 @@
 ---
 # vars file for kentr.setup-drush
+
+drush_rsync_mode: 'Pavu'
+drush_rsync_excludes: '*.wmv:*.mp4:*.pdf:*.doc*:*.ppt*:*.psd:*.xls*:css/**:js/**:php/twig/**'
