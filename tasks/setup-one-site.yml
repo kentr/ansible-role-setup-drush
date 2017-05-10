@@ -58,7 +58,7 @@
           ),
           'rsync' => array (
             'mode' => 'Pavu',
-            'exclude-paths' => '*.wmv:*.mp4:*.pdf:*.doc*:*.ppt*:*.psd:*.xls*',
+            'exclude-paths' => '*.wmv:*.mp4:*.pdf:*.doc*:*.ppt*:*.psd:*.xls*:css/**:js/**:php/twig/**',
           ),
         ),
       );
@@ -113,7 +113,7 @@
           ),
           'rsync' => array (
             'mode' => 'Pavu',
-            'exclude-paths' => '*.wmv:*.mp4:*.pdf:*.doc*:*.ppt*',
+            'exclude-paths' => '*.wmv:*.mp4:*.pdf:*.doc*:*.ppt*:*.psd:*.xls*:css/**:js/**:php/twig/**',
           ),
         ),
       );
