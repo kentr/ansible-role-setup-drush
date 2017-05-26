@@ -100,6 +100,7 @@
           'sql-sync' => array (
             'enable' => array(
               'devel',
+              'diff',
             ),
           ),
         ),
