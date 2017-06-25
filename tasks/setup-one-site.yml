@@ -90,7 +90,7 @@
         'root' => '{{ item.root }}',
         'remote-host' => '{{ inventory_hostname }}',
         'remote-user' => '{{ ansible_user_id }}',
-        'ssh-options' => '-o PasswordAuthentication=no -i ' . drush_server_home() . '/.ssh/id_rsa',
+        'ssh-options' => '-o PasswordAuthentication=no -i ' . drush_server_home() . '/.ssh/id_rsa -o LogLevel=quiet',
         'source-command-specific' => array (
           'sql-sync' => array (
             'structure-tables-key' => 'common',
