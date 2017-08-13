@@ -16,7 +16,7 @@
     backup: yes
     dest: ~/.drush/drushrc.php
     state: present
-    insertafter: "^\\# \\$options\\[.structure-tables.\\]\\[.common.\\]"
+    regexp: "^(\\# )?\\$options\\[.structure-tables.\\]\\[.common.\\]"
     line: "$options['structure-tables']['common'] = array({{ drush_sync_structure_tables_common }});"
   when: drush_enable_structure_tables_key_common | default(False)
 
