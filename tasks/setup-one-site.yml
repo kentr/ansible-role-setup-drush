@@ -37,31 +37,7 @@
     dest: "~/.drush/{{ item.drush_alias_file_prefix | default(inventory_hostname) }}.aliases.drushrc.php"
     marker: "// {mark} ANSIBLE MANAGED BLOCK: @{{ item.drush_alias_file_prefix | default(inventory_hostname) }}.{{ item.env }}"
     state: present
-    content: |
-      $aliases['{{ item.env }}'] = array(
-        // base URL
-        'uri' => '{{ item.uri | default('default') }}',
-        // drupal_core_path.
-        'root' => '{{ item.root }}',
-        'source-command-specific' => array (
-          'sql-sync' => array (
-            'structure-tables-key' => 'common',
-          ),
-        ),
-        'command-specific' => array (
-          'sql-dump' => array (
-            'structure-tables-key' => 'common',
-            'gzip' => '1',
-          ),
-          'archive-dump' => array (
-            'structure-tables-key' => 'common',
-          ),
-          'rsync' => array (
-            'mode' => '{{ drush_rsync_mode }}',
-            'exclude-paths' => '{{ drush_rsync_excludes }}',
-          ),
-        ),
-      );
+    content:  "{{ lookup('template', 'templates/single-alias-block.j2') }}"
   when: item.uri is defined and drush_aliases_remote | default(False)
 
 # ----------------------------------------------
