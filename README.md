@@ -15,7 +15,35 @@ Drush installed on remote machine.
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+# Enable the "common" structure-tables-key.
+# See https://raw.githubusercontent.com/drush-ops/drush/master/examples/example.drushrc.php
+drush_enable_structure_tables_key_common: True
+
+# Enable insertion of local and remote drush aliases.
+# Values are taken from inventory values for host.
+drush_aliases_remote: True
+drush_aliases_local: True
+
+# For drush aliases on the remote machine, items in `installations` that have an
+# `environment` property matching this list will be created as "local" aliases.
+# SSH options will be ignored.
+#
+# This is useful when the remote node being provisioned by Ansible is actually a
+# `local` dev environment.
+# On that remote node, a drush alias for `local` will be created without
+# SSH options, so that the alias acts on the machine.
+drush_aliases_remote_skip_ssh:
+  - local
+
+# Enable dated sql-dump result file.
+drush_enable_dated_result_file: True
+
+drush_alias_file_prefix: "{{ inventory_hostname }}"
+
+# SSH options passed to Drush.
+# This string will be enclosed by single quotes in the PHP Drush alias file.
+drush_ssh_options: "-o PasswordAuthentication=no -o LogLevel=quiet"
+
 
 Dependencies
 ------------
