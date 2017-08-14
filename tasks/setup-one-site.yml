@@ -64,8 +64,8 @@
         'uri' => '{{ item.uri | default('default') }}',
         // drupal_core_path.
         'root' => '{{ item.root }}',
-        'remote-host' => '{{ inventory_hostname }}',
-        'remote-user' => '{{ ansible_user_id }}',
+        'remote-host' => '{{ item.ssh_host }}',
+        'remote-user' => '{{ item.ssh_user }}',
         'ssh-options' => '-o PasswordAuthentication=no -i ' . drush_server_home() . '/.ssh/id_rsa -o LogLevel=quiet',
         'source-command-specific' => array (
           'sql-sync' => array (
