@@ -3,6 +3,15 @@
         'uri' => '{{ item.uri | default('default') }}',
         // drupal_core_path.
         'root' => '{{ item.root }}',
+
+        {% if item.env not in drush_aliases_remote_skip_ssh %}
+          'remote-host' => '{{ item.ssh_host }}',
+          'remote-user' => '{{ item.ssh_user }}',
+          {% if item.drush_ssh_options is defined %}
+            'ssh-options' => "{{ item.drush_ssh_options }}",
+          {% endif %}
+        {% endif %}
+
         'source-command-specific' => array (
           'sql-sync' => array (
             'structure-tables-key' => 'common',
