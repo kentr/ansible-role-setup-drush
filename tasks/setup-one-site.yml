@@ -66,7 +66,7 @@
         'root' => '{{ item.root }}',
         'remote-host' => '{{ item.ssh_host }}',
         'remote-user' => '{{ item.ssh_user }}',
-        'ssh-options' => '-o PasswordAuthentication=no -i ' . drush_server_home() . '/.ssh/id_rsa -o LogLevel=quiet',
+        'ssh-options' => '{{ item.drush_ssh_options | default(drush_ssh_options) }}',
         'source-command-specific' => array (
           'sql-sync' => array (
             'structure-tables-key' => 'common',

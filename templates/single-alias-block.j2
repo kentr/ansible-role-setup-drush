@@ -7,9 +7,7 @@
         {% if item.env not in drush_aliases_remote_skip_ssh %}
           'remote-host' => '{{ item.ssh_host }}',
           'remote-user' => '{{ item.ssh_user }}',
-          {% if item.drush_ssh_options is defined %}
-            'ssh-options' => "{{ item.drush_ssh_options }}",
-          {% endif %}
+          'ssh-options' => '{{ item.drush_ssh_options | default(drush_ssh_options) }}',
         {% endif %}
 
         'source-command-specific' => array (

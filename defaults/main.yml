@@ -26,3 +26,7 @@ drush_aliases_remote_skip_ssh:
 drush_enable_dated_result_file: True
 
 drush_alias_file_prefix: "{{ inventory_hostname }}"
+
+# SSH options passed to Drush.
+# This string will be enclosed by single quotes in the PHP Drush alias file.
+drush_ssh_options: "-o PasswordAuthentication=no -o LogLevel=quiet"
