@@ -34,6 +34,8 @@ drush_alias_file_prefix: "{{ inventory_hostname }}"
 # This string will be enclosed by single quotes in the PHP Drush alias file.
 drush_ssh_options: "-o PasswordAuthentication=no -o LogLevel=quiet"
 
+# Destination directory for SQL dump files.
+drush_sql_dump_dir: "/home/{{ ansible_ssh_user }}/drush-backups/archive-dump"
 
 Dependencies
 ------------
