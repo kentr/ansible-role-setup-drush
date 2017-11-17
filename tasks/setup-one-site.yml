@@ -46,9 +46,6 @@
     dest: "~/.drush/{{ item.drush_alias_file_prefix | default(inventory_hostname) }}.aliases.drushrc.php"
     src: templates/drush.aliases.drushrc.php.j2
 
-- debug:
-    var: item
-
 - name: Insert remote Drush alias declarations.
   become: no
   blockinfile:
