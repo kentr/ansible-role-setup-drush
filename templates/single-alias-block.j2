@@ -1,9 +1,11 @@
       $aliases['{{ item.env }}'] = array(
         // base URL
         'uri' => '{{ item.uri | default('default') }}',
-        // drupal_core_path.
+        {% if not item.ssh_host | regex_search('.drush.in') -%}
         'root' => '{{ item.root }}',
-        {#
+        {%- else -%}
+        // `root` is omitted because this appears to be a Pantheon site.
+        {%- endif %}
           SSH information for the alias is included unless:
           - drush_all_aliases_remote is not True AND
             - item.drush_alias_is_local_on_remote_node == True
