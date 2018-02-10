@@ -25,15 +25,24 @@
       'source-command-specific' => array (
         'sql-sync' => array (
           'structure-tables-key' => 'common',
+          {% if item.drush_structure_tables|default(drush_structure_tables) -%}
+          'structure-tables-list' => '{{ item.drush_structure_tables|default(drush_structure_tables)|join(",") }}',
+          {% endif -%}
         ),
       ),
       'command-specific' => array (
         'sql-dump' => array (
           'structure-tables-key' => 'common',
           'gzip' => '1',
+          {% if item.drush_structure_tables|default(drush_structure_tables) -%}
+          'structure-tables-list' => '{{ item.drush_structure_tables|default(drush_structure_tables)|join(",") }}',
+          {% endif -%}
         ),
         'archive-dump' => array (
           'structure-tables-key' => 'common',
+          {% if item.drush_structure_tables|default(drush_structure_tables) -%}
+          'structure-tables-list' => '{{ item.drush_structure_tables|default(drush_structure_tables)|join(",") }}',
+          {% endif -%}
         ),
         'rsync' => array (
           'mode' => '{{ drush_rsync_mode }}',

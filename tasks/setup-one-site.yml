@@ -40,6 +40,9 @@
 #
 #       Note that for aliases created on `localhost`, this value is ignored and all aliases
 #       are created as "remote" aliases
+#
+#   drush_structure_tables: Optional.  List of strings containing table names to be added
+#       as `structure-tables` options.
 ##########################################################################################
 
 
