@@ -4,6 +4,7 @@
       'root' => '{{ item.root }}',
       {% else -%}
       // `root` is omitted because this appears to be a Pantheon site.
+      // @see https://github.com/drush-ops/drush/issues/313
       {% endif %}
       {#-
         SSH information for the alias is included unless:
@@ -20,8 +21,8 @@
       'remote-host' => '{{ item.ssh_host | default(inventory_hostname) }}',
       'remote-user' => '{{ item.ssh_user | default(ansible_user_id) }}',
       'ssh-options' => '{{ item.drush_ssh_options | default(drush_ssh_options) }}',
-      {% endif %}
 
+      {% endif -%}
 
       {% if item.drush_db_url | default(None) -%}
       'db-url' => '{{ item.drush_db_url }}',
@@ -34,6 +35,7 @@
         '{{ alias }}' => '{{ item['drush_path_aliases'][alias] }}',
         {% endfor -%}
       ),
+
       {% endif -%}
 
       'source-command-specific' => array (

@@ -11,7 +11,9 @@
 #   drush_ssh_options: Required. Additional options that Drush should use for SSH (remote)
 #       operations.
 #
-#   root: Required. Absolute path to the item's root web folder.  No default.
+#   root: Optional. Absolute path to the item's root web folder.  No default.
+#       If a Pantheon site is detected, this property will be ignored.
+#       See https://github.com/drush-ops/drush/issues/313
 #
 #   env: Required. The environment for this installation.  Will be the ".xyz" suffix
 #       for the alias.  Typical value would be one of [dev | stage | prod].
