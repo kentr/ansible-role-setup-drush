@@ -51,6 +51,10 @@
 #         '%files': 'sites/default/files'
 #         '%drush-script': 'drush'
 #       ```
+#
+#   drush_db_url: Optional. String database URL in the format expected by the Drush
+#       `--source-db-url` option.
+#       Will be added to the alias block as a `db-url` property.
 ##########################################################################################
 
 

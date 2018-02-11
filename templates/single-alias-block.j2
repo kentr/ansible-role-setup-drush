@@ -22,6 +22,12 @@
       'ssh-options' => '{{ item.drush_ssh_options | default(drush_ssh_options) }}',
       {% endif %}
 
+
+      {% if item.drush_db_url | default(None) -%}
+      'db-url' => '{{ item.drush_db_url }}',
+
+      {% endif -%}
+
       {% if item['drush_path_aliases'] | default(None)  -%}
       'path-aliases' => array(
         {% for alias in item['drush_path_aliases'] | list -%}
