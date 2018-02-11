@@ -43,6 +43,14 @@
 #
 #   drush_structure_tables: Optional.  List of strings containing table names to be added
 #       as `structure-tables` options.
+#
+#   drush_path_aliases: Optional.  Dictionary of path aliases.
+#       Example:
+#       ```
+#       drush_path_aliases:
+#         '%files': 'sites/default/files'
+#         '%drush-script': 'drush'
+#       ```
 ##########################################################################################
 
 

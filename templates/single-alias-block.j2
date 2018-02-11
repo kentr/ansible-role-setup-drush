@@ -22,6 +22,14 @@
       'ssh-options' => '{{ item.drush_ssh_options | default(drush_ssh_options) }}',
       {% endif %}
 
+      {% if item['drush_path_aliases'] | default(None)  -%}
+      'path-aliases' => array(
+        {% for alias in item['drush_path_aliases'] | list -%}
+        '{{ alias }}' => '{{ item['drush_path_aliases'][alias] }}',
+        {% endfor -%}
+      ),
+      {% endif -%}
+
       'source-command-specific' => array (
         'sql-sync' => array (
           'structure-tables-key' => 'common',
