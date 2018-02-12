@@ -61,7 +61,7 @@
           {% endif -%}
         ),
         'rsync' => array (
-          'mode' => '{{ drush_rsync_mode }} -e "ssh {{ item.drush_ssh_options | default(drush_ssh_options) }}"',
+          'mode' => '{{ drush_rsync_mode }}',
           'exclude-paths' => '{{ drush_rsync_excludes }}',
         ),
       ),
