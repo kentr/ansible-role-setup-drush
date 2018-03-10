@@ -52,5 +52,5 @@
     state: directory
   when: drush_9_or_higher
 
-- include: setup-one-site.yml
+- include_tasks: setup-one-site.yml
   with_items: "{{ installations }}"
