@@ -13,17 +13,17 @@
               - item.drush_alias_is_local_on_remote_node is undefined AND
               - item.env in ['prod', 'stage']
 
-          @todo Make this cleaner with Vagrant.
-        -#}
-        {% if
-          drush_all_aliases_remote | default(False) or
-          not item.drush_alias_is_local_on_remote_node | default( item.env in ['prod', 'stage'] )
-        -%}
-          'remote-host' => '{{ item.ssh_host | default(inventory_hostname) }}',
-          'remote-user' => '{{ item.ssh_user | default(ansible_user_id) }}',
-          'ssh-options' => '{{ item.drush_ssh_options | default(drush_ssh_options) }}',
+        @todo Make this cleaner with Vagrant.
+      -#}
+      {% if
+        drush_all_aliases_remote | default(False) or
+        not item.drush_alias_is_local_on_remote_node | default( item.env in ['prod', 'stage'] )
+      -%}
+      'remote-host' => '{{ item.ssh_host | default(inventory_hostname) }}',
+      'remote-user' => '{{ item.ssh_user | default(ansible_user_id) }}',
+      'ssh-options' => '{{ item.drush_ssh_options | default(drush_ssh_options) }}',
 
-        {% endif -%}
+      {% endif -%}
 
       {% if item.drush_db_url | default(None) -%}
       'db-url' => '{{ item.drush_db_url }}',
@@ -61,9 +61,9 @@
           'structure-tables-list' => '{{ item.drush_structure_tables|default(drush_structure_tables)|join(",") }}',
           {% endif -%}
         ),
-          'rsync' => array (
-            'mode' => '{{ drush_rsync_mode }}',
-            'exclude-paths' => '{{ drush_rsync_excludes }}',
-          ),
+        'rsync' => array (
+          'mode' => '{{ drush_rsync_mode }}',
+          'exclude-paths' => '{{ drush_rsync_excludes }}',
+        ),
       ),
     );
