@@ -12,6 +12,7 @@
   command: drush init -y
   args:
     creates: ~/.drush/drush.bashrc
+    chdir: "{{ drupal_core_path }}"
 
 - block:
   - block:
